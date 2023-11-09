@@ -9,6 +9,7 @@ package model;
  * @author aluno
  */
 public class TurmasModel {
+    int id_turmas;
     int numero;
     String professor;
     String alunos;
@@ -18,18 +19,26 @@ public class TurmasModel {
     }
 
     
-    public TurmasModel(int numero, String nome, String alunos, String disciplina) {
+    public TurmasModel(int id_turmas, int numero, String professor, String alunos, String disciplina) {
+        this.id_turmas = id_turmas;
         this.numero = numero;
         this.professor = professor;
         this.alunos = alunos;
         this.disciplina = disciplina;
     }
+    
+    public int getId_turmas() {
+        return id_turmas;
+    }
+
+    public void setId_turmas(int id_turmas) {
+        this.id_turmas = id_turmas;
 
     public int getNumero() {
         return numero;
     }
 
-    public void setNumero(int codigo) {
+    public void setNumero(int numero) {
         this.numero = numero;
     }
 
@@ -57,6 +66,19 @@ public class TurmasModel {
         this.disciplina = disciplina;
     }
     
+public void add(TurmasModel turmas) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+}     
 
-       
+    public void setCpf(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setNome(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void setIdade(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

@@ -24,15 +24,16 @@ public class ProfessoresDAO {
     PreparedStatement pstm = null;
     
     public void Atualizar(ProfessoresModel professores) {
-        String sql = "update alunos set where cpf=?,nome=?,idade=?,disciplina=?";
+        String sql = "update alunos set cpf=?,nome=?,idade=?,disciplina=? where id_professores=?";
         try {
             con = Conexao.createConnection();
             pstm = con.prepareStatement(sql);
 
-            pstm.setInt(1, professores.getCpf());
-            pstm.setString(2, professores.getNome());
-            pstm.setInt(3, professores.getIdade());
-            pstm.setString(4,professores.getDisciplina());
+            pstm.setInt(1, professores.getId_professores());
+            pstm.setInt(2, professores.getCpf());
+            pstm.setString(3, professores.getNome());
+            pstm.setInt(4, professores.getIdade());
+            pstm.setString(5,professores.getDisciplina());
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Professor Atualizado");
         } catch (Exception e) {
@@ -52,11 +53,12 @@ public class ProfessoresDAO {
             while (rset.next()) {
                 ProfessoresModel professores = new ProfessoresModel();
                 
-                Professores.setCpf(rset.getInt("cpf"));
-                Professores.setNome(rset.getString("nome"));
-                Professores.setIdade(rset.getInt("idade"));
-                Professores.setDisciplina(rset.getString("disciplina"));
-                Professores.add(professores);
+                professores.setId_professores(rset.getInt("Id_professores"));
+                professores.setCpf(rset.getInt("cpf"));
+                professores.setNome(rset.getString("nome"));
+                professores.setIdade(rset.getInt("idade"));
+                professores.setDisciplina(rset.getString("disciplina"));
+                professores.add(professores);
             }
 
             return professores;
@@ -66,30 +68,6 @@ public class ProfessoresDAO {
         }
     }
 
-    private static class Professores {
-
-        private static void setCpf(int aInt) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static void setDisciplina(String string) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static void setNome(String string) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static void setIdade(int aInt) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        private static void add(ProfessoresModel professores) {
-            throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-        }
-
-        public Professores() {
-        }
-    }
+    
 
 }

@@ -9,6 +9,7 @@ package model;
  * @author aluno
  */
 public class ProfessoresModel {
+    int id_professores;
     int cpf;
     String nome;
     int idade;
@@ -19,14 +20,21 @@ public class ProfessoresModel {
     }
 
     
-    public ProfessoresModel(int cpf, String nome, int quantidade, String disciplina) {
+    public ProfessoresModel(int id_professores, int cpf, String nome, int idade, String disciplina) {
+        this.id_professores = id_professores;
         this.cpf = cpf;
         this.nome = nome;
         this.idade = idade;
         this.disciplina = disciplina;
     }
 
-    
+    public int getId_professores() {
+        return id_professores;
+    }
+
+    public void setId_professores(int id_professores) {
+        this.id_professores = id_professores;
+        
     public int getCpf() {
         return cpf;
     }
@@ -59,6 +67,8 @@ public class ProfessoresModel {
         this.disciplina = disciplina;
     }
     
-
+public void add(ProfessoresModel professores) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
        
+}
 }

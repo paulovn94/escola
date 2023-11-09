@@ -24,15 +24,16 @@ public class TurmasDAO {
     PreparedStatement pstm = null;
     
     public void Atualizar(TurmasModel turmas) {
-        String sql = "update alunos set where numero=?,professor=?,alunos=?,disciplina=?";
+        String sql = "update alunos set numero=?,professor=?,alunos=?,disciplina=? where id_turmas=?";
         try {
             con = Conexao.createConnection();
             pstm = con.prepareStatement(sql);
 
-            pstm.setInt(1, turmas.getNumero());
-            pstm.setString(2, turmas.getProfessor());
-            pstm.setString(3, turmas.getAlunos());
-            pstm.setString(4,turmas.getDisciplina());
+            pstm.setInt(1, turmas.getId_turmas());
+            pstm.setInt(2, turmas.getNumero());
+            pstm.setString(3, turmas.getProfessor());
+            pstm.setString(4, turmas.getAlunos());
+            pstm.setString(5,turmas.getDisciplina());
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Turma Atualizada");
         } catch (Exception e) {
@@ -52,11 +53,12 @@ public class TurmasDAO {
             while (rset.next()) {
                 TurmasModel turmas = new TurmasModel();
                 
-                Turmas.setCpf(rset.getInt("numero"));
-                Turmas.setNome(rset.getString("nome"));
-                Turmas.setIdade(rset.getInt("idade"));
-                Turmas.setDisciplina(rset.getString("disciplina"));
-                Turmas.add(turmas);
+                
+                turmas.setCpf(rset.getInt("numero"));
+                turmas.setNome(rset.getString("nome"));
+                turmas.setIdade(rset.getInt("idade"));
+                turmas.setDisciplina(rset.getString("disciplina"));
+                turmas.add(turmas);
             }
 
             return turmas;

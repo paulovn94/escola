@@ -24,14 +24,15 @@ public class AlunosDAO {
     PreparedStatement pstm = null;
     
     public void Atualizar(AlunosModel alunos) {
-        String sql = "update alunos set where cpf=?,nome=?,idade=?";
+        String sql = "update alunos set cpf=?,nome=?,idade=? where id_alunos=?";
         try {
             con = Conexao.createConnection();
             pstm = con.prepareStatement(sql);
-
-            pstm.setInt(1, alunos.getCpf());
-            pstm.setString(2, alunos.getNome());
-            pstm.setInt(3, alunos.getIdade());
+            
+            pstm.setInt(1, alunos.getId_alunos);
+            pstm.setInt(2, alunos.getCpf());
+            pstm.setString(3, alunos.getNome());
+            pstm.setInt(4, alunos.getIdade());
             pstm.execute();
             JOptionPane.showMessageDialog(null, "Aluno Atualizado");
         } catch (Exception e) {
@@ -40,7 +41,7 @@ public class AlunosDAO {
     }
 
     public List<AlunosModel> getAlunos() {
-        String sql = "select * from produto";
+        String sql = "select * from alunos";
         con = Conexao.createConnection();
        
         try {
@@ -51,6 +52,7 @@ public class AlunosDAO {
             while (rset.next()) {
                 AlunosModel alunos = new AlunosModel();
                 
+                alunos.setId_alunos(rset.getInt("Id_alunos"));
                 alunos.setCpf(rset.getInt("cpf"));
                 alunos.setNome(rset.getString("nome"));
                 alunos.setIdade(rset.getInt("idade"));

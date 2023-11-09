@@ -1,0 +1,24 @@
+create database escola;
+
+use escola;
+
+create table aluno(
+cpf int(11) primary key not null auto_increment,
+nome varchar(50) not null,
+idade int(10) not null
+);
+
+create table professores(
+cpf int(11) primary key not null auto_increment,
+nome varchar(50) not null,
+idade int(10) not null,
+disciplina varchar(50) not null
+);
+
+create table turmas(
+numero int(5) primary key not null auto_increment,
+professor varchar(50) not null,
+alunos varchar(50) not null,
+disciplina varchar(50) not null
+);
+
